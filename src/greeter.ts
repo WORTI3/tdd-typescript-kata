@@ -1,5 +1,8 @@
 export class Greeter {
   greet(name: string): string {
+
+    name = name.trim();
+
     return `Hello ${name}`;
   }
 }
