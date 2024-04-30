@@ -5,6 +5,8 @@ describe("greet()", () => {
   let greeter: Greeter;
 
   beforeEach(() => {
+    const now = new Date(new Date().setHours(13)); // set to make tests "Machine-time" safe
+    jest.spyOn(global, 'Date').mockImplementation(() => now);
     greeter = new Greeter();
   });
 

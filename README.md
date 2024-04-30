@@ -17,3 +17,10 @@ Run tests:
 ```terminal
 pnpm test:jest
 ```
+
+Coverage:
+
+File        | % Stmts | % Branch | % Funcs | % Lines |
+------------|---------|----------|---------|---------|
+All files   |     100 |      100 |     100 |     100 |
+ greeter.ts |     100 |      100 |     100 |     100 |
