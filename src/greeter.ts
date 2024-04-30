@@ -1,6 +1,9 @@
 export class Greeter {
   greet(name: string): string {
 
+    // Requirement 7 - log to console when called
+    console.log("greet() method called with name:", name);
+
     // Requirement 2 - trim the input
     name = name.trim();
 
@@ -10,27 +13,31 @@ export class Greeter {
     // Get current hour
     const currentHour = new Date().getHours();
 
-    let greeting: string = "Hello";
-
-    // Requirement 4 - should return Good morning when time is 06:00-12:00
-    if (currentHour >= 6 && currentHour < 12) {
-      greeting = "Good morning";
-    }
-    
-    // Requirement 5 - should return Good evening when time is 18:00-22:00
-    if (currentHour >= 18 && currentHour < 22) {
-      greeting = "Good evening";
-    }
-    
-    // Requirement 6 - should return Good evening when time is 22:00-06:00
-    if (currentHour >= 22 || currentHour < 6) {
-      greeting = "Good night";
-    }
+    // refactor greeting into its own logic
+    let greeting = this.getGreeting(currentHour);
 
     return `${greeting} ${name}`;
   }
+
+  private getGreeting(hour: number): string {
+    // Requirement 4 - should return Good morning when time is 06:00-12:00
+    if (hour >= 6 && hour < 12) {
+      return "Good morning";
+    }
+    
+    // Requirement 5 - should return Good evening when time is 18:00-22:00
+    if (hour >= 18 && hour < 22) {
+      return "Good evening";
+    }
+    
+    // Requirement 6 - should return Good evening when time is 22:00-06:00
+    if (hour >= 22 || hour < 6) {
+      return "Good night";
+    }
+    return "Hello";
+ }
 }
 
-// Usage
+// Example Usage
 const greeter = new Greeter();
 console.log(greeter.greet("John"));

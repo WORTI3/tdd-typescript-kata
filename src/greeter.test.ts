@@ -68,4 +68,15 @@ describe("greet()", () => {
     // when / then
     expect(greeter.greet("john")).toBe("Good night John");
   });
+
+  it("should log to console on each call", () => {
+    // given
+    const consoleLogSpy = jest.spyOn(console, 'log');
+    
+    // when
+    greeter.greet("john");
+    
+    // then
+    expect(consoleLogSpy).toHaveBeenNthCalledWith(1, "greet() method called with name:", "john");
+  });
 });
