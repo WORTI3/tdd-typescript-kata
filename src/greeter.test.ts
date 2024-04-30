@@ -37,13 +37,24 @@ describe("greet()", () => {
   });
 
   it.each([
-    5, 12
-  ])("should return 'Hello <name>' when hour boundary is outside of 06:00-12:00 '%s'", (hour) => {
+    5, 12, 13, 14, 15, 16, 17, 22, 23
+  ])("should return 'Hello <name>' when hour boundary is outside of time ranges '%s'", (hour) => {
     // given
     const now = new Date(new Date().setHours(hour));
     jest.spyOn(global, 'Date').mockImplementation(() => now);
     
     // when / then
     expect(greeter.greet("john")).toBe("Hello John");
+  });
+
+  it.each([
+    18, 19, 20, 21
+  ])("should return 'Good evening <name>' when the time is 18:00-22:00 '%s'", (hour) => {
+    // given
+    const now = new Date(new Date().setHours(hour));
+    jest.spyOn(global, 'Date').mockImplementation(() => now);
+    
+    // when / then
+    expect(greeter.greet("john")).toBe("Good evening John");
   });
 });

@@ -15,6 +15,9 @@ export class Greeter {
     // Requirement 4 - should return Good morning when time is 06:00-12:00
     if (currentHour >= 6 && currentHour < 12) {
       greeting = "Good morning";
+      // Requirement 5 - should return Good evening when time is 18:00-22:00
+    } else if (currentHour >= 18 && currentHour < 22) {
+      greeting = "Good evening";
     }
 
     return `${greeting} ${name}`;
