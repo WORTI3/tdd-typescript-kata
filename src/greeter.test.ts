@@ -18,6 +18,10 @@ describe("greet()", () => {
     ["john  "],
     ["    john    "]
   ])("should trim the input '%s'", (input) => {
-      expect(greeter.greet(input)).toBe("Hello john");
+      expect(greeter.greet(input)).toBe("Hello John");
+  });
+
+  it("should capitalize the first letter of the name", () => {
+    expect(greeter.greet("john")).toBe("Hello John");
   });
 });
