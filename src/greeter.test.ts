@@ -24,4 +24,26 @@ describe("greet()", () => {
   it("should capitalize the first letter of the name", () => {
     expect(greeter.greet("john")).toBe("Hello John");
   });
+
+  it.each([
+    6, 7, 8, 9, 10, 11
+  ])("should return 'Good morning <name>' when the time is 06:00-12:00 '%s'", (hour) => {
+    // given
+    const now = new Date(new Date().setHours(hour));
+    jest.spyOn(global, 'Date').mockImplementation(() => now);
+    
+    // when / then
+    expect(greeter.greet("john")).toBe("Good morning John");
+  });
+
+  it.each([
+    5, 12
+  ])("should return 'Hello <name>' when hour boundary is outside of 06:00-12:00 '%s'", (hour) => {
+    // given
+    const now = new Date(new Date().setHours(hour));
+    jest.spyOn(global, 'Date').mockImplementation(() => now);
+    
+    // when / then
+    expect(greeter.greet("john")).toBe("Hello John");
+  });
 });

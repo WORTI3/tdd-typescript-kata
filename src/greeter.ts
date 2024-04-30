@@ -1,13 +1,23 @@
 export class Greeter {
   greet(name: string): string {
 
-    // Requirement 1 - trim the input
+    // Requirement 2 - trim the input
     name = name.trim();
 
-    // Requirement 2 - capitalise first letter of name
+    // Requirement 3 - capitalise first letter of name
     name = name.charAt(0).toUpperCase() + name.slice(1);
 
-    return `Hello ${name}`;
+    // Get current hour
+    const currentHour = new Date().getHours();
+
+    let greeting = "Hello";
+
+    // Requirement 4 - should return Good morning when time is 06:00-12:00
+    if (currentHour >= 6 && currentHour < 12) {
+      greeting = "Good morning";
+    }
+
+    return `${greeting} ${name}`;
   }
 }
 
